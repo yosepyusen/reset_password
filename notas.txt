@@ -1,0 +1,12 @@
+atributos para el reseteo de contraseña
+
+*name
+*email  
+*password
+*rol: admin, vendedor
+*request_password: enum=> 0,1 default 0 ; cero no solicitado receteo de contra y uno es si solicito reseteo  
+*token password: viene ser la llave de cada contraseña que hace el reseteo
+*expired_session: tiempo de enlace de vijencia de resteo de contraseña va estar vigente 30 minutos
+
+//
+id_usuario: va ser de campo obligatorio, y va ser auto incrementable: A_I
