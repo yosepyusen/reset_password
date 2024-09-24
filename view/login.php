@@ -47,6 +47,25 @@
             margin-left: 4px;
             padding: 5px;
         }
+        .links{
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .links >*{
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        .a1{
+            color: purple;
+        }
+        .a2{
+            color: green;
+        }
 
     </style>
 </head>
@@ -62,8 +81,8 @@
                 <input type="text" name="password" required>
             </div>
             <div class="links">
-                <a href="">Olvidaste la contraseña?</a>
-                <a href="">Registrate...!</a>
+                <a class="a1" href="">Olvidaste la contraseña?</a>
+                <a class="a2" href="registrate.php">Registrate...!</a>
             </div>
             <div class="btns">
                 <button class="boton" type="submit" name="login">Entrar</button>

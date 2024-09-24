@@ -45,15 +45,15 @@
 
     }
 
-    $conexion = new Conexion();
+    // $conexion = new Conexion();
 
-    if ($conexion->getConection()) {
+    // if ($conexion->getConection()) {
         
-        echo "Conectado";
-    } else {
+    //     echo "Conectado";
+    // } else {
         
-        echo "No conectado";
-    }
+    //     echo "No conectado";
+    // }
     
 
 ?>
