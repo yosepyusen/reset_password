@@ -66,19 +66,38 @@
         .a2{
             color: green;
         }
+        .msje{
+            text-align: center;
+            font-family: arial;
+            margin: 1rem;
+            color: red;
+            font-size: 14px;
+            font-weight: bold;
+            width: 80%;
+        }
 
     </style>
 </head>
 <body>
+    <?php session_start() ?>
     <br><br><br><br><br>
     <h1>Login</h1>
     <form class="formulario" name="form1" action="../app/logica.php" method="post">
         <div class="contenedor_formulario">
+            
+                <?php 
+                  if(isset($_SESSION['error'])):
+                ?>
+                <p class="msje"><?php echo $_SESSION['error'] ?></p>
+                <?php 
+                    unset($_SESSION['error']); endif;
+                ?>
+            
             <div class="nombre_texto"><p>Usuario</p> 
-                <input type="text" name="login" required>
+                <input type="text" name="usuario">
             </div>
             <div class="nombre_texto"><p>Contraseña</p> 
-                <input type="text" name="password" required>
+                <input type="text" name="pass">
             </div>
             <div class="links">
                 <a class="a1" href="">Olvidaste la contraseña?</a>

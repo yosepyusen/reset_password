@@ -4,6 +4,16 @@
     // login e acceso
     if (isset($_POST['login'])) { //si existe el btn login
         
+        if (!empty($_POST['usuario']) and !empty($_POST['pass'])) {
+
+            $login = $_POST['usuario'];
+            $password = $_POST['pass'];
+        } else {
+
+            $_SESSION['error'] = 'Ingrese sus credenciales';
+            header("location:../view/login.php");
+        }
+        
     }
 
     // registrar new usuario
@@ -12,11 +22,13 @@
         $name = $_POST['name'] ?? ''; //si esta definido va tomar 1mer valor cas contrario el vacio igual comillas simples
         $pass = $_POST['password'];
         $rol = $_POST['rol'];
+        $email = $_POST['email'];
 
         $respuesta = saveUser([
             "name"=> $name,
             "password" => password_hash($pass, PASSWORD_BCRYPT), //encriptamos pass
-            "rol"=> $rol
+            "rol"=> $rol,
+            "email" => $email
         ]);
 
         $mensaje = $respuesta ?'usuario registrado' :'no se puede registrar'; //el 1ro es true y el segundo depues de dos puntos es false
@@ -35,12 +47,13 @@
             $conectado = $conect->getConection();
 
             $conect->pps = $conectado->prepare( //preparamos la conexion y insertamos datos en la tabla usuarios
-                "INSERT INTO usuarios(name,password,rol) VALUES(:name,:password,:rol)"
+                "INSERT INTO usuarios(name,password,rol,email) VALUES(:name,:password,:rol,:email)"
             );
 
             $conect->pps->bindParam(":name", $datos['name']);
             $conect->pps->bindParam(":password", $datos['password']);
             $conect->pps->bindParam(":rol", $datos['rol']);
+            $conect->pps->bindParam(":email", $datos['email']);
 
             return $conect->pps->execute();// retorna 1(true, datos correctos) ó 0(false)
 
@@ -50,5 +63,19 @@
         }finally{
             $conect->closeDB();
         }
+    }
+
+    // realiza el logeo
+    function login(){
+        // consulta a db
+        $conect = new Conexion();
+
+
+    }
+
+    //consulta al usuaio
+    function ConsultaUsuario($conexion, array $dataConsulta){
+
+        //
     }
 ?>

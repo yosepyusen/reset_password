@@ -47,43 +47,45 @@
             margin-left: 4px;
             padding: 5px;
         }
-        .mensaje{
+        .links{
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .links >*{
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        .a1{
+            color: purple;
+        }
+        .a2{
             color: green;
         }
 
     </style>
 </head>
 <body>
-    <?php session_start() ?>
     <br><br><br><br><br>
-    <h1>Restritate</h1>
+    <h1>Login</h1>
     <form class="formulario" name="form1" action="../app/logica.php" method="post">
         <div class="contenedor_formulario">
             <div class="nombre_texto"><p>Usuario</p> 
-                <input type="text" name="name" required>
+                <input type="text" name="login" required>
             </div>
             <div class="nombre_texto"><p>Contraseña</p> 
-                <input type="password" name="password" required>
+                <input type="text" name="password" required>
             </div>
-            <div class="nombre_texto"><p>Rol</p>
-                <select name="rol" required>
-                    <option value="">Seleccione..</option>
-                    <option value="admin">Administrador</option>
-                    <option value="vendedor">Vendedor</option>
-                </select> 
+            <div class="links">
+                <a class="a1" href="">Olvidaste la contraseña?</a>
+                <a class="a2" href="registrate.php">Registrate...!</a>
             </div>
-            <div class="nombre_texto"><p>Email</p> 
-                <input type="email" name="email" required>
-            </div>
-            <?php 
-                if(isset($_SESSION['mensaje'])):
-            ?>
-            <p class="mensaje"><?php echo $_SESSION['mensaje'] ?></p>
-            <?php 
-                endif;
-            ?>
             <div class="btns">
-                <button class="boton" type="submit" name="registrar">Registrar</button>
+                <button class="boton" type="submit" name="login">Entrar</button>
                 <button class="boton" type="reset" name="cancel">Cancelar</button>
             </div>
             
