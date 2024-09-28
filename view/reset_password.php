@@ -71,18 +71,11 @@
 </head>
 <body>
     <br><br><br><br><br>
-    <h1>Login</h1>
+    <h1>Reset Password</h1>
     <form class="formulario" name="form1" action="../app/logica.php" method="post">
         <div class="contenedor_formulario">
-            <div class="nombre_texto"><p>Usuario</p> 
-                <input type="text" name="login" required>
-            </div>
-            <div class="nombre_texto"><p>Contraseña</p> 
-                <input type="text" name="password" required>
-            </div>
-            <div class="links">
-                <a class="a1" href="">Olvidaste la contraseña?</a>
-                <a class="a2" href="registrate.php">Registrate...!</a>
+            <div class="nombre_texto"><p>Escriba su email</p> 
+                <input type="text" name="email" required>
             </div>
             <div class="btns">
                 <button class="boton" type="submit" name="login">Entrar</button>

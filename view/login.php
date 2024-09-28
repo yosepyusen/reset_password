@@ -97,10 +97,10 @@
                 <input type="text" name="usuario">
             </div>
             <div class="nombre_texto"><p>Contraseña</p> 
-                <input type="text" name="pass">
+                <input type="password" name="pass">
             </div>
             <div class="links">
-                <a class="a1" href="">Olvidaste la contraseña?</a>
+                <a class="a1" href="reset_password.php">Olvidaste la contraseña?</a>
                 <a class="a2" href="registrate.php">Registrate...!</a>
             </div>
             <div class="btns">
