@@ -10,3 +10,9 @@ atributos para el reseteo de contraseña
 
 //
 id_usuario: va ser de campo obligatorio, y va ser auto incrementable: A_I
+
+// para envios de correos electronicos usamos "mailtrap", como es casos de prueba solo hace la 
+// simulacion de envios de correos 
+// vamos usar envios de email mediante SMTP(protocolo simple sencillo, la cual nos permite 
+// realizar envios de correo electronico) y para seguridad de envios de emails vamos usar el protocolo TLS( este
+// es parte de la seguridad de envios de correos)

@@ -66,19 +66,36 @@
         .a2{
             color: green;
         }
+        .msje{
+            text-align: center;
+            font-family: arial;
+            margin: 1rem;
+            color: red;
+            font-size: 14px;
+            font-weight: bold;
+            width: 80%;
+        }
 
     </style>
 </head>
 <body>
     <br><br><br><br><br>
+    <?php session_start() ?>
     <h1>Reset Password</h1>
-    <form class="formulario" name="form1" action="../app/logica.php" method="post">
+    <form class="formulario" name="form1" action="../app/logicamail.php" method="post">
         <div class="contenedor_formulario">
+            <?php 
+                  if(isset($_SESSION['response'])):
+                ?>
+                <p class="msje"><?php echo $_SESSION['response'] ?></p>
+                <?php 
+                    unset($_SESSION['response']); endif;
+            ?>
             <div class="nombre_texto"><p>Escriba su email</p> 
-                <input type="text" name="email" required>
+                <input type="text" name="correo">
             </div>
             <div class="btns">
-                <button class="boton" type="submit" name="login">Entrar</button>
+                <button class="boton" type="submit" name="reset_pass">Entrar</button>
                 <button class="boton" type="reset" name="cancel">Cancelar</button>
             </div>
             

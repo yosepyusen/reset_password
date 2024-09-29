@@ -117,6 +117,7 @@
             $_SESSION['error']= 'Error, no existe ese usuario';
             header("location:../view/login.php");
         }
+        
     }
 
     //consulta al usuaio
@@ -133,7 +134,7 @@
             $conexion->pps->execute();
 
             return $conexion->pps->fetchAll();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             
             echo $e->getMessage();
 
