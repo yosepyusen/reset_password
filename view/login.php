@@ -79,7 +79,7 @@
     </style>
 </head>
 <body>
-    <?php session_start() ?>
+    <?php session_start(); ?>
     <br><br><br><br><br>
     <h1>Login</h1>
     <form class="formulario" name="form1" action="../app/logica.php" method="post">

@@ -80,7 +80,7 @@
 </head>
 <body>
     <br><br><br><br><br>
-    <?php session_start() ?>
+    <?php session_start(); ?>
     <h1>Reset Password</h1>
     <form class="formulario" name="form1" action="../app/logicamail.php" method="post">
         <div class="contenedor_formulario">

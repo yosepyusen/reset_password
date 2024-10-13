@@ -47,7 +47,9 @@
                         //EnviarCorreoResetPassword($usuario);
                         //echo $usuario[0]->name; //imprime: yosep o yusen
                         //echo print_r($usuario); //imprime:Array ( [0] => stdClass Object ( [id_usuario] => 1 [name] => yosep [password] => $2y$10$GovLA8WuLB.kC00YdLCEeef5vvtzBY.Gg6BGCuQd9TNndfe2twQz. [rol] => admin [email] => yuchinnaxe@gmail.com [request_password] => 0 [token_password] => [expired_session] => ) ) 1
-                        EnviarCorreoResetPassword($usuario[0]->email, $usuario[0]->name, $usuario[0]->id_usuario, $usuario[0]->token_password);
+                        
+                        //me imprime el valor anterior de:$usuario[0]->token_password, mas no el que se actualizo
+                        EnviarCorreoResetPassword($usuario[0]->email, $usuario[0]->name, $usuario[0]->id_usuario, $token);
                     }
 
                 }else{
@@ -139,7 +141,7 @@
             $mail->isHTML(true); //enviamos en formato html
             $mail->Subject = 'Reseteo de Password'; //este es el asunto
             $mail->Body    = 'Usted ha solicitado un reseteo de contraseña <b>
-            <a href="http://localhost/reseteo_contraseña/view/cambiar_pass.php?id='.$usr_id.'&&token='.$token_usr.'">Cambiar Contraseña aqui</a></b>'; // es el contenido del correo
+            <a href="http://localhost/reseteo_contrasenia/view/cambiar_pass.php?id='.$usr_id.'&&token='.$token_usr.'">Cambiar Contraseña aqui</a></b>'; // es el contenido del correo
         
             $mail->send(); // con esto se envia el email
             echo 'Mensaje Enviado';
