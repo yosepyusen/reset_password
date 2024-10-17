@@ -39,7 +39,7 @@
                     //se seleccionan de manera completamente aleatoria, es probable que la cadena resultante contenga caracteres no imprimibles o secuencias UTF-8 no válidas.
                     
                     $token = bin2hex(random_bytes(32));
-
+                    // el token es para que no cambian el id en la url ya que los datos son pasados por GET
                     if (UpdateUser($token, TIEMPO_VIDA, $usuario[0]->id_usuario)) { //esto si se cumple y actualizo corctamente entonces enviamos el correo
 
                         // mandamos actualizar
