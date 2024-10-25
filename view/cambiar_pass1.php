@@ -1,35 +1,7 @@
-<?php 
+<?php  
+    // es validaciones de reste mail
     session_start();
-
-    require_once "../database/conexion.php";
-
-    $conect = new Conexion();
-    $conected = $conect->getConection();
-
-    $conect->sql = "SELECT * FROM usuarios WHERE id_usuario=? AND token_password=?";
-
-    try {
-        $conect->pps = $conected->prepare($conect->sql);
-        // forma Ejecutar una sentencia preparada con parámetros de sustitución de signos de interrogación,
-        // y poniendo numeros en e 1mer parametro del bindParam() 
-        $conect->pps->bindParam(1,$_GET['id']);
-        $conect->pps->bindParam(2,$_GET['token']);
-        $conect->pps->execute();
-
-        //que nos retorna en forma de obj. la consulta 
-        $data = $conect->pps->fetchAll(PDO::FETCH_OBJ);
-
-    } catch (\Throwable $th) {
-        echo $th->getMessage();
-
-    }finally{//cerramos la consulta para minimizar consumo de recursos
-        $conect->closeDB();
-    }    
-    //echo print_r($data); //con esto imprims consulta de obj. array
-
-    if(count($data)>0 and $data[0]->expired_session > time()): //si existe $data y expired_session(ya esta guardado en la db) es <= tiempo      
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -116,24 +88,18 @@
     <form class="formulario" name="form1" action="../app/actualizar_pass.php" method="post">
         <div class="contenedor_formulario">
 
-        <?php 
+            <?php 
                   if(isset($_SESSION['err'])):
                 ?>
                 <p class="msje"><?php echo $_SESSION['err'] ?></p>
                 <?php 
                     unset($_SESSION['err']); endif;
-                ?>
-            
-            <div hidden class="nombre_texto">
-                <input hidden type="text" name="text_id" value="<?= $data[0]->id_usuario ?>">
-            </div>
-            <div hidden class="nombre_texto">
-                <input hidden type="text" name="text_token" value="<?= $data[0]->token_password ?>">
-            </div>
+            ?>
+
             <div class="nombre_texto"><p>Contraseña Nueva</p> 
                 <input type="password" name="pass">
             </div>
-            <div class="nombre_texto"><p>Confirmar Contraseña Nueva</p> 
+            <div class="nombre_texto"><p>Confirmar contraseña</p> 
                 <input type="password" name="pass_confirm">
             </div>
             <div class="btns">
@@ -146,4 +112,3 @@
 </body>
 </html>
 
-<?php else: header("location:login.php"); endif; ?>
