@@ -49,7 +49,7 @@
                         //echo print_r($usuario); //imprime:Array ( [0] => stdClass Object ( [id_usuario] => 1 [name] => yosep [password] => $2y$10$GovLA8WuLB.kC00YdLCEeef5vvtzBY.Gg6BGCuQd9TNndfe2twQz. [rol] => admin [email] => yuchinnaxe@gmail.com [request_password] => 0 [token_password] => [expired_session] => ) ) 1
                         
                         //me imprime el valor anterior de:$usuario[0]->token_password, mas no el que se actualizo
-                        EnviarCorreoResetPassword($usuario[0]->email, $usuario[0]->name, $usuario[0]->id_usuario, $token);
+                        EnviarCorreoResetPassword($usuario[0]->email, $usuario[0]->name, $token);
                     }
 
                 }else{
@@ -118,7 +118,7 @@
     }
 
     // enviar correo reste pass
-    function EnviarCorreoResetPassword($emailReceptor, $nombreReceptor, $usr_id, $token_usr){
+    function EnviarCorreoResetPassword($emailReceptor, $nombreReceptor, $token_usr){ //mandamos id,si deseamos
 
         $mail = new PHPMailer(true);
 
@@ -141,8 +141,9 @@
             $mail->isHTML(true); //enviamos en formato html
             $mail->Subject = 'Reseteo de Password'; //este es el asunto
             $mail->Body    = 'Usted ha solicitado un reseteo de contraseña <b>
-            <a href="http://localhost/reseteo_contrasenia/view/cambiar_pass.php?id='.$usr_id.'&&token='.$token_usr.'">Cambiar Contraseña aqui</a></b>'; // es el contenido del correo
-        
+            <a href="http://localhost/reseteo_contrasenia/view/cambiar_pass.php?token='.$token_usr.'">Cambiar Contraseña aqui</a></b>'; // es el contenido del correo
+            //<a href="http://localhost/reseteo_contrasenia/view/cambiar_pass.php?id='.$usr_id.'&&token='.$token_usr.'">Cambiar Contraseña aqui</a></b>';
+
             $mail->send(); // con esto se envia el email
             echo 'Mensaje Enviado';
         } catch (Exception $e) {

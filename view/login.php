@@ -75,6 +75,15 @@
             font-weight: bold;
             width: 80%;
         }
+        .msje1{
+            text-align: center;
+            font-family: arial;
+            margin: 1rem;
+            color: green;
+            font-size: 14px;
+            font-weight: bold;
+            width: 80%;
+        }
 
     </style>
 </head>
@@ -91,6 +100,13 @@
                 <p class="msje"><?php echo $_SESSION['error'] ?></p>
                 <?php 
                     unset($_SESSION['error']); endif;
+                ?>
+                <?php 
+                  if(isset($_SESSION['mensaje'])):
+                ?>
+                <p class="msje1"><?php echo $_SESSION['mensaje'] ?></p>
+                <?php 
+                    unset($_SESSION['mensaje']); endif;
                 ?>
             
             <div class="nombre_texto"><p>Usuario</p> 

@@ -13,15 +13,19 @@
             if( $pass === $passconfirm){
                 
                 $passencript = password_hash($pass, PASSWORD_BCRYPT);
-                UpdatePass($passencript,$user_id);
+                if(UpdatePass($passencript,$user_id)){
+                    
+                    $_SESSION['mensaje'] = "Contraseña Actualizado...!!"; 
+                    header("location:../index.php");                   
+                }
 
             }else{    
-                $_SESSION['err'] = "Contraseñas deben ser iguales";
+                $_SESSION['mensaje'] = "Contraseñas deben ser iguales";
                 echo "<script>history.back()</script>";
             }
 
         }else{
-            $_SESSION['err']= "Completa los campos";
+            $_SESSION['mensaje']= "Completa los campos";
             echo "<script>history.back()</script>";
 
         }

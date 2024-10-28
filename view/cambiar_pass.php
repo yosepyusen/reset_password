@@ -6,14 +6,15 @@
     $conect = new Conexion();
     $conected = $conect->getConection();
 
-    $conect->sql = "SELECT * FROM usuarios WHERE id_usuario=? AND token_password=?";
+    $conect->sql = "SELECT * FROM usuarios WHERE token_password=?";
+    // $conect->sql = "SELECT * FROM usuarios WHERE id_usuario=? AND token_password=?";
 
     try {
         $conect->pps = $conected->prepare($conect->sql);
         // forma Ejecutar una sentencia preparada con parámetros de sustitución de signos de interrogación,
         // y poniendo numeros en e 1mer parametro del bindParam() 
-        $conect->pps->bindParam(1,$_GET['id']);
-        $conect->pps->bindParam(2,$_GET['token']);
+        // $conect->pps->bindParam(1,$_GET['id']);
+        $conect->pps->bindParam(1,$_GET['token']);
         $conect->pps->execute();
 
         //que nos retorna en forma de obj. la consulta 
@@ -117,11 +118,12 @@
         <div class="contenedor_formulario">
 
         <?php 
-                  if(isset($_SESSION['err'])):
+                  if(isset($_SESSION['mensaje'])):
                 ?>
-                <p class="msje"><?php echo $_SESSION['err'] ?></p>
+               
+                <p class="msje"><?php echo $_SESSION['mensaje'] ?></p>
                 <?php 
-                    unset($_SESSION['err']); endif;
+                    unset($_SESSION['mensaje']); endif;
                 ?>
             
             <div hidden class="nombre_texto">
