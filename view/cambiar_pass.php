@@ -1,33 +1,9 @@
 <?php 
     session_start();
-
-    require_once "../database/conexion.php";
-
-    $conect = new Conexion();
-    $conected = $conect->getConection();
-
-    $conect->sql = "SELECT * FROM usuarios WHERE token_password=?";
-    // $conect->sql = "SELECT * FROM usuarios WHERE id_usuario=? AND token_password=?";
-
-    try {
-        $conect->pps = $conected->prepare($conect->sql);
-        // forma Ejecutar una sentencia preparada con parámetros de sustitución de signos de interrogación,
-        // y poniendo numeros en e 1mer parametro del bindParam() 
-        // $conect->pps->bindParam(1,$_GET['id']);
-        $conect->pps->bindParam(1,$_GET['token']);
-        $conect->pps->execute();
-
-        //que nos retorna en forma de obj. la consulta 
-        $data = $conect->pps->fetchAll(PDO::FETCH_OBJ);
-
-    } catch (\Throwable $th) {
-        echo $th->getMessage();
-
-    }finally{//cerramos la consulta para minimizar consumo de recursos
-        $conect->closeDB();
-    }    
-    //echo print_r($data); //con esto imprims consulta de obj. array
-
+    require("../app/token.php");
+    
+    $data=timeUpdate();
+    
     if(count($data)>0 and $data[0]->expired_session > time()): //si existe $data y expired_session(ya esta guardado en la db) es <= tiempo      
 ?>
 
